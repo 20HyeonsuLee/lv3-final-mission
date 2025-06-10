@@ -35,6 +35,6 @@ public class MemberController {
 
     @GetMapping("/trainers/comment")
     public ResponseEntity<Comment> getComment() {
-        return ResponseEntity.ok(new Comment(memberService.getCommend()));
+        return ResponseEntity.ok(new Comment(memberService.getComment()));
     }
 }

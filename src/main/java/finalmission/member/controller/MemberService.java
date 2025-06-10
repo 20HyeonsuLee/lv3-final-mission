@@ -28,7 +28,7 @@ public class MemberService {
         return TrainerResponse.from(memberQuery.findAllTrainer());
     }
 
-    public String getCommend() {
+    public String getComment() {
         String randomName = randomNameClient.getRandomName();
         return String.format("%s: 이분한테 PT받고 몸짱됐어요~", randomName);
 

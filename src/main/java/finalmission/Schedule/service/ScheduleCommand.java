@@ -19,4 +19,6 @@ public class ScheduleCommand {
         scheduleQuery.getReservationTime(time);
         schedule.changeTime(time);
     }
+
+
 }

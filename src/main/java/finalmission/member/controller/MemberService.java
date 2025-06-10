@@ -1,10 +1,12 @@
 package finalmission.member.controller;
 
+import finalmission.member.controller.dto.TrainerResponse;
 import finalmission.member.service.MemberQuery;
 import finalmission.member.controller.dto.LoginRequest;
 import finalmission.member.model.member.Email;
 import finalmission.member.model.member.Member;
 import finalmission.member.model.member.Password;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,9 @@ public class MemberService {
                 new Email(request.email()),
                 new Password(request.password())
         );
+    }
+
+    public List<TrainerResponse> findAllTrainer() {
+        return TrainerResponse.from(memberQuery.findAllTrainer());
     }
 }

@@ -39,7 +39,7 @@ public class RestAssuredTestBase {
                         "email", member.getEmail().toString(),
                         "password", member.getPassword().toString()
                 ))
-                .when().post("/login")
+                .when().post("/members/login")
                 .then().log().all()
                 .statusCode(200)
                 .extract()

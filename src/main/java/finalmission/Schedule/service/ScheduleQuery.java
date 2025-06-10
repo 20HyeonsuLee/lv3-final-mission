@@ -1,5 +1,6 @@
 package finalmission.Schedule.service;
 
+import finalmission.Schedule.model.ReservationDate;
 import finalmission.Schedule.model.ReservationTime;
 import finalmission.Schedule.model.Schedule;
 import finalmission.Schedule.repository.ScheduleRepository;
@@ -28,5 +29,9 @@ public class ScheduleQuery {
 
     public Schedule getById(final Long id) {
         return scheduleRepository.findById(id).orElseThrow(() -> new NoSuchElementException("존재하지 않는 일정입니다."));
+    }
+
+    public List<Schedule> findAllScheduleByTrainerAndDate(final Trainer trainer, final ReservationDate reservationDate) {
+        return scheduleRepository.findAllByTrainerAndDate(trainer, reservationDate);
     }
 }

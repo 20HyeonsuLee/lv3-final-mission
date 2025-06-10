@@ -36,9 +36,7 @@ class ReservationRestTest extends RestAssuredTestBase {
     private ReservationRepository reservationRepository;
 
     @BeforeEach
-    void setUp(
-            @Autowired ScheduleRepository scheduleRepository
-            ) {
+    void setUp(@Autowired ScheduleRepository scheduleRepository) {
         trainer = memberRepository.save(Trainer.builder()
                 .email(new Email("trainer@gmail.com"))
                 .password(new Password("password"))

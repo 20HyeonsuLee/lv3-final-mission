@@ -1,5 +1,6 @@
 package finalmission.member.controller;
 
+import finalmission.member.controller.dto.Comment;
 import finalmission.member.controller.dto.LoginRequest;
 import finalmission.member.controller.dto.TrainerResponse;
 import finalmission.member.model.member.Member;
@@ -30,5 +31,10 @@ public class MemberController {
     @GetMapping("/trainers")
     public ResponseEntity<List<TrainerResponse>> findAllTrainer() {
         return ResponseEntity.ok(memberService.findAllTrainer());
+    }
+
+    @GetMapping("/trainers/comment")
+    public ResponseEntity<Comment> getComment() {
+        return ResponseEntity.ok(new Comment(memberService.getCommend()));
     }
 }

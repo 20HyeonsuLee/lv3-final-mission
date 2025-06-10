@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
     private final MemberQuery memberQuery;
+    private final RandomNameClient randomNameClient;
 
     public Member login(final LoginRequest request) {
         return memberQuery.getByEmailAndPassword(
@@ -25,5 +26,11 @@ public class MemberService {
 
     public List<TrainerResponse> findAllTrainer() {
         return TrainerResponse.from(memberQuery.findAllTrainer());
+    }
+
+    public String getCommend() {
+        String randomName = randomNameClient.getRandomName();
+        return String.format("%s: 이분한테 PT받고 몸짱됐어요~", randomName);
+
     }
 }

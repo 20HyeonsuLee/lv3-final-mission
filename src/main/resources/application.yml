@@ -17,7 +17,9 @@ spring:
 api:
   randommer:
     secret-key: 18de5e998c104ce19cf4ee107dd3c2c7
-    uri: https://randommer.io/api/Name?nameType=firstname&quantity=1
+    host: randommer.io
+    path:
+      name: /api/Name
 
 logging:
   level:

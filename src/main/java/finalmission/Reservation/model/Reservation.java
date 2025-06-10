@@ -8,11 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import java.util.Objects;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
+@Getter
 public class Reservation {
 
     @Id
@@ -24,4 +31,8 @@ public class Reservation {
 
     @ManyToOne
     private Customer customer;
+
+    public boolean isSameCustomer(Customer customer) {
+        return Objects.equals(this.customer.getId(), customer.getId());
+    }
 }

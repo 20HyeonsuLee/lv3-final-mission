@@ -66,7 +66,15 @@ class MemberRestTest extends RestAssuredTestBase {
                 .then().log().all()
                 .statusCode(200)
                 .body("size()", is(2));
+    }
 
-
+    @Test
+    void 트레이너의_인사말을_조회한다() {
+        // when & then
+        RestAssured.given().log().all()
+                .contentType(ContentType.JSON)
+                .when().get("/members/trainers/comment")
+                .then().log().all()
+                .statusCode(200);
     }
 }

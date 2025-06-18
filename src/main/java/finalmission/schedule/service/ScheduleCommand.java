@@ -16,9 +16,11 @@ public class ScheduleCommand {
     private final ScheduleQuery scheduleQuery;
 
     public void changeReservationTime(Schedule schedule, ReservationTime time) {
-        scheduleQuery.getReservationTime(time);
         schedule.changeTime(time);
     }
 
 
+    public void delete(final Schedule schedule) {
+        scheduleRepository.delete(schedule);
+    }
 }

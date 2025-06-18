@@ -31,7 +31,16 @@ public class ScheduleQuery {
         return scheduleRepository.findById(id).orElseThrow(() -> new NoSuchElementException("존재하지 않는 일정입니다."));
     }
 
-    public List<Schedule> findAllScheduleByTrainerAndDate(final Trainer trainer, final ReservationDate reservationDate) {
+    public List<Schedule> findAllScheduleByTrainerAndDate(final Trainer trainer,
+                                                          final ReservationDate reservationDate) {
         return scheduleRepository.findAllByTrainerAndDate(trainer, reservationDate);
+    }
+
+    public Schedule getSchedule(
+            final Trainer trainer,
+            final ReservationDate reservationDate,
+            final ReservationTime reservationTime
+    ) {
+        return scheduleRepository.findByTrainerAndDateAndTime(trainer, reservationDate, reservationTime);
     }
 }

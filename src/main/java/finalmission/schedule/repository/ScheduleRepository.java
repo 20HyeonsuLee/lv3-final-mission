@@ -15,4 +15,10 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     List<Schedule> findAllByTrainer(Trainer trainer);
 
     List<Schedule> findAllByTrainerAndDate(Trainer trainer, ReservationDate reservationDate);
+
+    Schedule findByTrainerAndDateAndTime(
+            Trainer trainer,
+            ReservationDate reservationDate,
+            ReservationTime reservationTime
+    );
 }

@@ -1,5 +1,6 @@
 package finalmission.integration.rest;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.hamcrest.Matchers.is;
 
 import finalmission.reservation.repository.ReservationRepository;
@@ -19,6 +20,9 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Map;
+import java.util.Optional;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +37,11 @@ class ScheduleRestTest extends RestAssuredTestBase {
     @Autowired
     private ReservationRepository reservationRepository;
 
+    @Autowired
+    private ScheduleRepository scheduleRepository;
+
     @BeforeEach
-    void setUp(@Autowired ScheduleRepository scheduleRepository) {
+    void setUp() {
         trainer = memberRepository.save(Trainer.builder()
                 .email(new Email("trainer@gmail.com"))
                 .password(new Password("password"))
@@ -66,5 +73,42 @@ class ScheduleRestTest extends RestAssuredTestBase {
                 .then().log().all()
                 .statusCode(200)
                 .body("size()", is(1));
+    }
+
+    @Test
+    void 트레이너가_특정_날짜의_일정을_수정한다() {
+        System.out.println(schedule.getTime().time().toString());
+        RestAssured.given().log().all()
+                .contentType(ContentType.JSON)
+                .cookie("JSESSIONID", sessionId)
+                .body(Map.of("modifyTime", "11:00"))
+                .when().post("/schedules/{trainer-id}/{date}/{time}",
+                        trainer.getId(),
+                        schedule.getDate().date().toString(),
+                        schedule.getTime().time().toString())
+                .then().log().all()
+                .statusCode(200);
+
+        SoftAssertions.assertSoftly(softly -> {
+            Optional<Schedule> findSchedule = scheduleRepository.findById(schedule.getId());
+            softly.assertThat(findSchedule).isPresent();
+            softly.assertThat(findSchedule.get().getTime().time()).isEqualTo(LocalTime.of(11, 0));
+        });
+    }
+
+    @Test
+    void 트레이너가_특정_날짜의_일정을_삭제한다() {
+        System.out.println(schedule.getTime().time().toString());
+        RestAssured.given().log().all()
+                .contentType(ContentType.JSON)
+                .cookie("JSESSIONID", sessionId)
+                .when().delete("/schedules/{trainer-id}/{date}/{time}",
+                        trainer.getId(),
+                        schedule.getDate().date().toString(),
+                        schedule.getTime().time().toString())
+                .then().log().all()
+                .statusCode(204);
+        Optional<Schedule> findSchedule = scheduleRepository.findById(schedule.getId());
+        assertThat(findSchedule).isNotPresent();
     }
 }

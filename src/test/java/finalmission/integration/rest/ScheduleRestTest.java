@@ -77,7 +77,6 @@ class ScheduleRestTest extends RestAssuredTestBase {
 
     @Test
     void 트레이너가_특정_날짜의_일정을_수정한다() {
-        System.out.println(schedule.getTime().time().toString());
         RestAssured.given().log().all()
                 .contentType(ContentType.JSON)
                 .cookie("JSESSIONID", sessionId)

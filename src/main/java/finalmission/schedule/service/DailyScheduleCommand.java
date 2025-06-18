@@ -30,4 +30,7 @@ public class DailyScheduleCommand {
     }
 
 
+    public void delete(final DailySchedule dailySchedule) {
+        dailyScheduleRepository.delete(dailySchedule);
+    }
 }

@@ -2,12 +2,11 @@ package finalmission.integration.rest;
 
 import static org.hamcrest.Matchers.is;
 
-import finalmission.Reservation.model.Reservation;
-import finalmission.Reservation.repository.ReservationRepository;
-import finalmission.Schedule.model.ReservationDate;
-import finalmission.Schedule.model.ReservationTime;
-import finalmission.Schedule.model.Schedule;
-import finalmission.Schedule.repository.ScheduleRepository;
+import finalmission.reservation.repository.ReservationRepository;
+import finalmission.schedule.model.ReservationDate;
+import finalmission.schedule.model.ReservationTime;
+import finalmission.schedule.model.Schedule;
+import finalmission.schedule.repository.ScheduleRepository;
 import finalmission.integration.RestAssuredTestBase;
 import finalmission.member.model.Customer;
 import finalmission.member.model.Trainer;
@@ -20,7 +19,6 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

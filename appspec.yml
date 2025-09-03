@@ -21,12 +21,6 @@ permissions:
     group: ubuntu
     mode: 755
 
-  - object: /opt/LV3_final/scripts
-    pattern: "**"
-    owner: ubuntu
-    group: ubuntu
-    mode: 755
-
   - object: /opt/LV3_final/compose.yaml
     owner: ubuntu
     group: ubuntu

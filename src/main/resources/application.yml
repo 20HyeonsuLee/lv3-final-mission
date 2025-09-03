@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: local
   datasource:
     url: jdbc:mysql://localhost:3307/lv2_final_mission
     username: root

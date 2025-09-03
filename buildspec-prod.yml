@@ -14,20 +14,20 @@ phases:
       - ls -la build/libs/
       - JAR_FILE=$(find build/libs -name "*.jar" -not -name "*-plain.jar" | head -1)
       - echo "Found JAR file:" $JAR_FILE
-      - cp "$JAR_FILE" ../LV3_final.jar
-      - echo "✅ Copied JAR to ../LV3_final.jar"
-      - ls -la ../ | grep LV3_final.jar
+      - cp "$JAR_FILE" ./LV3_final.jar
+      - echo "✅ Copied JAR to ./LV3_final.jar"
+      - ls -la ./ | grep LV3_final.jar
 
       # 스크립트 복사
-      - cp -r ./scripts ../scripts_copy/
-      - chmod +x ../scripts_copy/*.sh
-      - echo "✅ Copied scripts to ../scripts_copy/"
-      - ls -la ../scripts_copy/
+      - cp -r ./scripts ./scripts_copy/
+      - chmod +x ./scripts_copy/*.sh
+      - echo "✅ Copied scripts to ./scripts_copy/"
+      - ls -la ./scripts_copy/
 
       # appspec 복사
-      - cp appspec.yml ../appspec.yml
-      - echo "✅ Copied appspec.yml to ../"
-      - ls -la ../ | grep appspec.yml
+      - cp appspec.yml ./appspec.yml
+      - echo "✅ Copied appspec.yml to ./"
+      - ls -la ./ | grep appspec.yml
 
   post_build:
     commands:

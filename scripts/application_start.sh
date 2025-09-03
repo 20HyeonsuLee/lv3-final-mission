@@ -11,6 +11,8 @@ cd /opt/LV3_final
 # ==========================================
 echo "☕ 1. Spring Boot 애플리케이션 시작 중..."
 
+ls -a
+
 # JAR 파일 확인
 if [ -f "app/LV3_final.jar" ]; then
     echo "   📄 JAR 파일 확인됨: LV3_final.jar"

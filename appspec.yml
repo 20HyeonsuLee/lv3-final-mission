@@ -5,7 +5,7 @@ os: linux
 files:
   # 백엔드 JAR 파일을 EC2 서버의 배포 디렉토리로 복사
   - source: LV3_final.jar
-    destination: /opt/LV3_final/app
+    destination: /opt/LV3_final
     file_exists_behavior: OVERWRITE
 
   # 설정 파일들 복사
@@ -15,7 +15,7 @@ files:
 
 # 파일 권한 설정
 permissions:
-  - object: /opt/LV3_final/app
+  - object: /opt/LV3_final
     pattern: "**"
     owner: ubuntu
     group: ubuntu

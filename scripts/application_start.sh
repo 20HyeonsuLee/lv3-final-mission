@@ -14,7 +14,7 @@ echo "☕ 1. Spring Boot 애플리케이션 시작 중..."
 ls -a
 
 # JAR 파일 확인
-if [ -f "app/LV3_final.jar" ]; then
+if [ -f "LV3_final.jar" ]; then
     echo "   📄 JAR 파일 확인됨: LV3_final.jar"
 else
     echo "   ❌ JAR 파일을 찾을 수 없습니다!"
@@ -22,8 +22,8 @@ else
 fi
 
 # 기존 JAR 프로세스 종료 (있다면)
-if [ -f "app/LV3_final.pid" ]; then
-    OLD_PID=$(cat app/LV3_final.pid)
+if [ -f "LV3_final.pid" ]; then
+    OLD_PID=$(cat LV3_final.pid)
     if ps -p $OLD_PID > /dev/null 2>&1; then
         echo "   🛑 기존 애플리케이션 프로세스 종료 중 (PID: $OLD_PID)"
         kill -SIGTERM $OLD_PID
@@ -34,7 +34,7 @@ if [ -f "app/LV3_final.pid" ]; then
             kill -SIGKILL $OLD_PID
         fi
     fi
-    rm -f app/LV3_final.pid
+    rm -f LV3_final.pid
 fi
 
 # JVM 옵션 설정
@@ -51,5 +51,5 @@ nohup java $JVM_OPTS \
     > logs/application.log 2>&1 &
 
 # PID 저장
-echo $! > app/LV3_final.pid
-echo "   ✅ Spring Boot 애플리케이션 시작 완료 (PID: $(cat app/LV3_final.pid))"
+echo $! > LV3_final.pid
+echo "   ✅ Spring Boot 애플리케이션 시작 완료 (PID: $(cat LV3_final.pid))"

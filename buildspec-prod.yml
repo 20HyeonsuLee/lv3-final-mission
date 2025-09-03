@@ -1,6 +1,11 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - echo "Secondary source contents:"
+      - ls -al $CODEBUILD_SRC_DIR_config
+      - cp $CODEBUILD_SRC_DIR_config/application.yml ./src/main/resources/
   install:
     runtime-versions:
       java: corretto21

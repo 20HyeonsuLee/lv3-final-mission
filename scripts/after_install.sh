@@ -20,7 +20,6 @@ cd /opt/LV3_final
 
 # JAR 파일 확인
 if [ -f "LV3_final.jar" ]; then
-    ln -sf LV3_final.jar LV3_final.jar
     echo "JAR 파일 심볼릭 링크 생성: LV3_final.jar"
 else
     echo "❌ JAR 파일을 찾을 수 없습니다!"

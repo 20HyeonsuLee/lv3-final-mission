@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Mission</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .endpoint { margin: 20px 0; }
+        .endpoint h3 { color: #666; }
+        .endpoint a { 
+            display: inline-block; 
+            padding: 10px 15px; 
+            background: #007bff; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .endpoint a:hover { background: #0056b3; }
+        .description { color: #888; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Final Mission API</h1>
+    
+    <div class="endpoint">
+        <h3>Member API</h3>
+        <a href="/members/trainers" target="_blank">/members/trainers</a>
+        <a href="/members/trainers/comment" target="_blank">/members/trainers/comment</a>
+        <div class="description">트레이너 목록 및 랜덤 코멘트 조회</div>
+    </div>
+
+    <div class="endpoint">
+        <h3>Schedule API</h3>
+        <a href="/schedules" target="_blank">/schedules</a>
+        <div class="description">스케줄 관련 API</div>
+    </div>
+
+    <div class="endpoint">
+        <h3>Reservation API</h3>
+        <a href="/reservations" target="_blank">/reservations</a>
+        <div class="description">예약 관련 API</div>
+    </div>
+
+    <div class="endpoint">
+        <h3>Daily Schedule API</h3>
+        <a href="/daily-schedules" target="_blank">/daily-schedules</a>
+        <div class="description">요일별 스케줄 관리</div>
+    </div>
+
+    <script>
+        // 페이지 로드 시 API 상태 확인
+        async function checkApiStatus() {
+            try {
+                const response = await fetch('/members/trainers');
+                console.log('API Status: OK');
+                console.log('Trainers:', await response.json());
+            } catch (error) {
+                console.error('API Status: Error', error);
+            }
+        }
+        
+        checkApiStatus();
+    </script>
+</body>
+</html>

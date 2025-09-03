@@ -1,0 +1,19 @@
+CREATE TABLE member (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    dtype VARCHAR(31) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    birth_date DATE NOT NULL,
+    gender VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE customer (
+    id BIGINT PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES member(id)
+);
+
+CREATE TABLE trainer (
+    id BIGINT PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES member(id)
+);

@@ -1,0 +1,39 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+    commands:
+      - ls -la
+      - chmod +x ./gradlew
+
+  build:
+    commands:
+      - ./gradlew build -x test
+      - ls -la build/libs/
+      - JAR_FILE=$(find build/libs -name "*.jar" -not -name "*-plain.jar" | head -1)
+      - echo "Found JAR file:" $JAR_FILE
+      - cp "$JAR_FILE" ../LV3_final.jar
+
+      # 스크립트 복사
+      - cp -r ./scripts ../scripts/
+      - chmod +x ../scripts/*.sh
+
+      # appspec 복사
+      - cp appspec.yml ../appspec.yml
+  post_build:
+    commands:
+      - echo "Build completed on $(date)"
+
+artifacts:
+  files:
+    - LV3_final.jar
+    - scripts/*
+    - appspec.yml
+
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*'
+    - '/root/.gradle/wrapper/**/*'
+    - '.gradle/**/*'

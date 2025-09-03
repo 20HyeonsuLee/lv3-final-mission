@@ -18,7 +18,7 @@ if pgrep -f "LV3_final" > /dev/null; then
 fi
 
 # 배포 디렉토리 생성 및 정리
-sudo mkdir -p /opt/LV3_final/{app,scripts,logs}
+sudo mkdir -p /opt/LV3_final/{scripts,logs}
 sudo chown -R ubuntu:ubuntu /opt/LV3_final
 
 echo "=== [BEFORE_INSTALL] 완료 ==="

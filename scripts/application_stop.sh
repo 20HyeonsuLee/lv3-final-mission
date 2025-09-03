@@ -11,8 +11,8 @@ cd /opt/LV3_final
 echo ""
 echo "☕ 1. Spring Boot 애플리케이션 종료 중..."
 
-if [ -f "app/LV3_final.pid" ]; then
-    PID=$(cat app/LV3_final.pid)
+if [ -f "LV3_final.pid" ]; then
+    PID=$(cat LV3_final.pid)
 
     if ps -p $PID > /dev/null 2>&1; then
         echo "   🛑 Spring Boot 애플리케이션을 안전하게 종료합니다 (PID: $PID)"
@@ -45,7 +45,7 @@ if [ -f "app/LV3_final.pid" ]; then
     fi
 
     # PID 파일 제거
-    rm -f app/LV3_final.pid
+    rm -f LV3_final.pid
 else
     echo "   ℹ️ PID 파일이 없습니다. 애플리케이션이 실행 중이 아닐 수 있습니다"
 fi
